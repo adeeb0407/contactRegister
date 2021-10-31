@@ -1,6 +1,8 @@
 import ContactForm from "./ContactForm";
 import {useState, useEffect} from 'react'
 import firebase from '../firebase'
+import { RiEdit2Fill } from 'react-icons/ri';
+import { AiFillDelete } from 'react-icons/ai';
 function Contacts() {
     const [contactObjects, setContactObjects] = useState({}); //{{}, {}, {}}
     const [currentId, setCurrentId] = useState('');
@@ -59,6 +61,9 @@ function Contacts() {
 <div className="jumbotron jumbotron-fluid">
    <div className="container">
       <h1 className="display-4 text-center">Contact Register</h1>
+      <br />
+      <br />
+      <br />
    </div>
 </div>
 <div className="row">
@@ -66,9 +71,10 @@ function Contacts() {
       <ContactForm  {...({addOrEdit, currentId, contactObjects})} />
    </div>
    <div className="col-md-7">
-      <table className="table table-borderless table-stripped">
+      <table className="table table-stripped table-dark table-bordered table-hover" color = 'dark'>
          <thead className="thead-light">
             <tr>
+               <th>Sr.No</th>
                <th>Full Name</th>
                <th>Mobile</th>
                <th>Email</th>
@@ -78,8 +84,9 @@ function Contacts() {
          <tbody> 
             {console.log(contactObjects)}
              {
-                 Object.keys(contactObjects).map(id => {
+                 Object.keys(contactObjects).map((id,index) => {
                      return <tr key={id}>
+                     <td>{index + 1}</td>
                      <td>{contactObjects[id].fullName}</td>
                      <td>{contactObjects[id].mobile}</td>
                      <td>{contactObjects[id].email}</td>
@@ -87,12 +94,12 @@ function Contacts() {
                         <a className="btn text-primary" 
                            onClick={() => { setCurrentId(id) }}
                         >
-                        <i className="fas fa-pencil-alt"></i>
+                        <RiEdit2Fill />
                         </a>
                         <a className="btn text-danger" 
                            onClick={() => { onDelete(id)}}
                         >
-                        <i className="far fa-trash-alt"></i>
+                        <AiFillDelete />
                         </a>
                      </td>
                   </tr>

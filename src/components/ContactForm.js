@@ -1,4 +1,7 @@
 import {useState, useEffect} from 'react';
+import { FaUserAlt, FaMobile } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+
 
 function ContactForm(props) {
    console.log(props);
@@ -11,7 +14,7 @@ function ContactForm(props) {
     const [values, setValues] = useState(initialFieldValues);
 
     useEffect(() => {
-      if(props.currentId == '')
+      if(props.currentId === '')
          setValues({
             ...initialFieldValues
          })
@@ -36,8 +39,8 @@ function ContactForm(props) {
         <form autoComplete='off' onSubmit={handleFormSubmit}>
    <div className="form-group input-group">
       <div className="input-group-prepend">
-         <div className="input-group-text">
-            <i className="fas fa-user"></i>
+         <div className="input-group-text py-3">
+            <FaUserAlt />
          </div>
       </div>
       <input className="form-control" 
@@ -48,10 +51,10 @@ function ContactForm(props) {
          />
    </div>
    <div className="form-row">
-      <div className="form-group input-group col-md-6">
+      <div className="form-group input-group col-md-6 py-3">
          <div className="input-group-prepend">
-            <div className="input-group-text">
-               <i className="fas fa-mobile-alt"></i>
+            <div className="input-group-text py-3">
+               <FaMobile/>
             </div>
          </div>
          <input className="form-control" 
@@ -63,8 +66,8 @@ function ContactForm(props) {
       </div>
       <div className="form-group input-group col-md-6">
          <div className="input-group-prepend">
-            <div className="input-group-text">
-               <i className="fas fa-envelope"></i>
+            <div className="input-group-text py-3">
+               <MdEmail />
             </div>
          </div>
          <input className="form-control" 
@@ -75,7 +78,7 @@ function ContactForm(props) {
             />
       </div>
    </div>
-   <div className="form-group">
+   <div className="form-group py-3">
       <textarea className="form-control" 
                 placeholder="Address" 
                 name="address"
